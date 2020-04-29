@@ -6,7 +6,7 @@ import { JuegosComponent } from './componentes/juegos/juegos.component';
 import { MenuCardComponent } from './componentes/menu-card/menu-card.component';
 import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
-import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
+//import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 //import { MemoriaComponent } from './componentes/memoria-numerica/memoria-numerica.component';
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { TatetiComponent } from './componentes/tateti/tateti.component';
@@ -22,7 +22,7 @@ import {AuthGuard}from "./guards/auth.guard";
 import {NologinGuard} from "./guards/nologin.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Principal', pathMatch: 'full' },
+  { path: '', redirectTo: '/Login', pathMatch: 'full' },
   { path: 'Principal',component: PrincipalComponent,canActivate:[AuthGuard] ,data: {animation: 'PrincipalPage'}},
   {path: 'Jugadores' , component: JugadoresListadoComponent,canActivate:[AuthGuard]},
   {path: 'Login' , component: LoginComponent,canActivate:[NologinGuard] ,data: {animation: 'LoginPage'}},
@@ -38,12 +38,13 @@ const routes: Routes = [
       { path: '', component: MenuCardComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
-      { path: 'Adivina', component: AdivinaElNumeroComponent },
+      //{ path: 'Adivina', component: AdivinaElNumeroComponent },
       //{ path: 'Memoria', component: MemoriaComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'Tateti', component: TatetiComponent },
     ]
   },
+  {path: '**',redirectTo: '/Juegos', pathMatch: 'full'}
 ];
 
 @NgModule({

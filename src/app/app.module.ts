@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule }from '@angular/platform-browser/animations';
-import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
+//import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +17,7 @@ import { ErrorComponent } from './componentes/error/error.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
 import { MenuComponent } from './componentes/menu/menu.component';
-import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
+//import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
@@ -60,14 +60,14 @@ import { ModalComponent } from './componentes/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AdivinaElNumeroComponent,
+    //AdivinaElNumeroComponent,
     ListadoDeResultadosComponent,
     ErrorComponent,
     PrincipalComponent,
     LoginComponent,
     AgilidadAritmeticaComponent,
     MenuComponent,
-    AdivinaMasListadoComponent,
+    //AdivinaMasListadoComponent,
     AgilidadMasListadoComponent,
     ListadoComponent,
     ListadosComponent,
