@@ -20,6 +20,8 @@ export class PiedraPapelTijeraComponent implements OnInit {
   imagenJugadaUsario: string = './././assets/imagenes/tijera.png';
   jugadaSeleccionada: number;
 
+  modalText: string;
+
   constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.nuevoJuego = new JuegoPiedraPapelTijera(databaseService);
   }
@@ -47,7 +49,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   verificar() {
     this.nuevoJuego.verificarJugada();
     this.mostrarMensaje();
-    this.enJuego = false;
+    //this.enJuego = false;
   }
 
   /**
@@ -56,15 +58,19 @@ export class PiedraPapelTijeraComponent implements OnInit {
    *   1 (usuario gana)
    */
   mostrarMensaje() {
+    (<HTMLButtonElement>document.getElementById('btnModal')).click();
     switch (this.nuevoJuego.resultado) {
       case -1:
-        this.toastr.error("Fallaste esta vez", ":( :( :(");
+        //this.toastr.error("Fallaste esta vez", ":( :( :(");
+        this.modalText = "PERDISTE!!";
         break;
       case 0:
-        this.toastr.warning("Intentalo de nuevo", "Es un empate");
+        //this.toastr.warning("Intentalo de nuevo", "Es un empate");
+        this.modalText = "EMPATE!!";
         break;
       case 1:
-        this.toastr.success("Ganaste", "¡Felicitaciones!");
+        //this.toastr.success("Ganaste", "¡Felicitaciones!");
+        this.modalText = "GANASTE!!";
         break;
     }
   }
