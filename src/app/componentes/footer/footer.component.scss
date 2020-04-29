@@ -1,0 +1,17 @@
+$color: purple;
+$colorText: yellow;
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    //line-height: 30px;
+    background-color: #35006d;
+    color: yellow;
+    //font-family: inherit;
+    font-weight: 500;
+
+    .container{
+        margin: 0px;
+    }
+}

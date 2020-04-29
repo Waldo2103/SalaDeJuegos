@@ -1,0 +1,41 @@
+<div class="container">
+    <div align="center" class="jumbotron">
+        <h1 class="display-4">Anagrama</h1>
+        <br>
+        <div align="center" *ngIf="!enJuego">
+                <p><button (click)="nuevo()" class="btn-lg" type="button" id="button-nuevo">
+                        Jugar</button></p>
+        </div>
+        <div class="en-juego" *ngIf="enJuego">
+            <div class="container tablero">
+                <div class="" *ngIf="!enJuego">
+                    <p>Ingrese un Anagrama..</p>
+                </div>
+                <div class="">
+                    <div class="col-sm-12 col-md-4" *ngIf="nuevoJuego.palabraSeleccionada!=''">
+                        <div class="">
+                            <h2>{{nuevoJuego.palabraSeleccionada}}</h2>
+                        </div>
+                        <div class="">
+                            <div class="input-group mb-3">
+
+                                <input id="input-ingresado" [(ngModel)]="nuevoJuego.palabraIngresada" type="text"
+                                    class="form-control" placeholder="Ingrese un anagrama:"
+                                    aria-label="Ingrese un anagrama:" aria-describedby="button-addon2">
+                                <div [hidden]="ocultarVerificar" class="input-group-append">
+                                    <button class="" type="button" id="button-verificar"
+                                        (click)="verificarUsr()">Verificar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p><i class="fa fa-spinner fa-spin">
+                            </i> Ingrese un anagrama de la palabra : {{nuevoJuego.palabraSeleccionada}} </p>
+
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

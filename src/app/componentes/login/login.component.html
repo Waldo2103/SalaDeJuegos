@@ -1,0 +1,34 @@
+
+<div class="container" >
+  <div class="jumbotron" style="padding:50px;">
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmitLogin()">
+        <div class="imgcontainer">
+            <img src="./././assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
+          </div>
+      <div class="container">
+        <label><b>Usuario</b></label>
+        <input type="text" placeholder="Usuario"   formControlName="mail" required>
+        <ng-container *ngFor="let validation of validation_messages.mail">
+          <div *ngIf="form.get('mail').hasError(validation.type) && (form.get('mail').dirty || form.get('mail').touched)">
+            <label color="danger"> {{ validation.message }} </label>
+          </div>
+        </ng-container>
+        <label><b>Clave</b></label>
+        <input type="password" placeholder="Clave"  formControlName="password" required>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div
+            *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)">
+            <label color="danger"> {{ validation.message }} </label>
+          </div>
+        </ng-container>   
+        <button type="button" class="" type="submit" [disabled]="!form.valid">Aceptar</button>
+      </div>
+
+      <div class="container">
+        <button type="button" class="" routerLink="/Registro" >Registrarse</button>
+      </div>
+     
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+img{
+    width: 60%;
+}
+
+.tablero{
+    padding: .5em 1em;
+    justify-content: center;
+}
+
+table{
+    background-image: linear-gradient(purple,yellow);
+    
+}
+
+td {
+    text-align: center;
+    height: 150px;
+    width: 150px;
+}
+
+#center-row{
+    border-top: 5px solid rgb(253, 230, 19);
+    border-bottom: 5px solid rgb(253, 230, 19);
+    border-right: 5px solid rgb(253, 230, 19);
+    border-left: 5px solid rgb(253, 230, 19);
+}
+
+.borde-right{
+    border-right: 5px solid rgb(253, 230, 19);
+    border-left: 5px solid rgb(253, 230, 19);
+    border-bottom: 5px solid rgb(253, 230, 19);
+    border-top: 5px solid rgb(253, 230, 19);
+}

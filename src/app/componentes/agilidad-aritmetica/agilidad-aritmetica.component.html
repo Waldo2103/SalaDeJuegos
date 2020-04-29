@@ -1,0 +1,40 @@
+<div class="container">
+   
+  <app-modal></app-modal>
+
+    <div class="jumbotron" align="center">
+        <!--jw-modal  class="modal" id="custom-modal-1" >
+            
+            <p></p>
+            <p class="titulo">{{modalText}}</p>
+            <br>
+            <button class="modal" (click)="nuevo();">Volver a Jugar</button>
+            <button class="modal" routerLink="/Juegos">Salir</button>
+            <br>
+            <p></p>
+          </jw-modal-->
+        <h1 class="display-4">Agilidad Aritmetica</h1>
+        <br>
+        <div align="center" *ngIf="!enJuego">
+            <p><button (click)="nuevo()" class="btn-lg" type="button" id="button-nuevo">
+                    Jugar</button></p>
+        </div>
+        <br>
+        <div *ngIf="enJuego">
+            <h2>{{nuevoJuego.operandoUno}} {{nuevoJuego.operador}} {{nuevoJuego.operandoDos}} = {{nuevoJuego.numeroIngresado}}</h2>
+            <label for="input-numero-ingresado">Ingrese su respuesta: </label>
+            <div class="input-group mb-3">
+                <input  id="input-numero-ingresado" [(ngModel)]="nuevoJuego.numeroIngresado" type="number"
+                    class="form-control" placeholder="?" aria-label="Ingrese un número:"
+                    aria-describedby="button-addon2">
+            </div>
+            <div *ngIf="nuevoJuego.operandoUno!=0">
+                <h6 *ngIf="nuevoJuego.numeroIngresado!=0" class="display-5">{{nuevoJuego.numeroIngresado}}</h6>
+                <hr class="my-4">
+                <p><i class="fa fa-spinner fa-spin">
+                    </i> Te quedan <span>{{tiempo}}</span> segundos</p>
+            </div>
+        </div>
+    </div>
+    
+</div>

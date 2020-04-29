@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.css';
+
+
+body {
+    font-family: arcade !important;
+    margin: 0;
+    background-image: url("./././assets/imagenes/fondoGral.jpg");
+    background-size: cover;
+
+}
+.jumbotron{
+    background-image: url("./././assets/imagenes/fondoLogin.jpg");
+    background-size: cover;
+}
+
+button {
+    border: none;
+    background: #893a99;
+    color: rgb(255, 238, 0);
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease;
+    }
+
+button:before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 42px;
+    background: rgba(255, 238, 0, 0.801);
+    border-radius: 5px;
+    transition: all 2s ease;
+    }
+
+button:hover {
+    background: rgba(0,0,0,0);
+    color: #becc00;
+    box-shadow: inset 0 0 0 6px #ffee00;
+    }
+
+
+button{
+    padding: 10px 35px;
+    overflow:hidden;
+    }
+
+button:before {
+    font-family: FontAwesome;
+    content:">>";
+    position: absolute;
+    top: 11px;
+    left: -30px;
+    transition: all 200ms ease;
+    }
+        
+button:hover:before {
+    left: 7px;
+    }
+
+input{
+    background-color: #e2d6e7;
+}
+
+span{
+    background-color: #dbbfe0b6;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: blanchedalmond;
+}
+p{
+    color: blanchedalmond;
+
+}
+label
+{
+    color: blanchedalmond;
+}
+
+/* **************FUENTES*************************** */
+
+@font-face {
+    font-family: lazer;
+    src: url(assets/fuentes/Lazer84.ttf) format("opentype");
+    
+  }
+
+  @font-face {
+    font-family: arcade;
+    src: url(assets/fuentes/ArcadepixPlus.ttf) format("opentype");
+  }

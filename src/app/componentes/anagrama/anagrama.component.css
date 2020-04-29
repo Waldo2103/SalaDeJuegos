@@ -1,0 +1,14 @@
+/*ul li:hover{
+    color: #ffffff;
+    background-color: #007bff;
+    cursor: pointer;
+}*/
+
+input {
+    width: 100px !important;
+    height: 100px;
+    font-size: 80px;
+    background-color: yellow;
+    text-align: center;
+    color: purple;
+}
