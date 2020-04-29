@@ -3,16 +3,32 @@
   <app-modal></app-modal>
 
     <div class="jumbotron" align="center">
-        <!--jw-modal  class="modal" id="custom-modal-1" >
-            
-            <p></p>
+         <!--*****************************************************************************************-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="btnModal" [hidden]="true" data-target="#myModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fullscreen-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4-->
+        </div>
+        <div class="modal-body">
             <p class="titulo">{{modalText}}</p>
-            <br>
-            <button class="modal" (click)="nuevo();">Volver a Jugar</button>
-            <button class="modal" routerLink="/Juegos">Salir</button>
-            <br>
-            <p></p>
-          </jw-modal-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="" data-dismiss="modal" (click)="nuevo()">Volver a Jugar</button>
+          <button type="button" class=""  data-dismiss="modal" routerLink="/Juegos">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--*****************************************************************************************-->
+
         <h1 class="display-4">Agilidad Aritmetica</h1>
         <br>
         <div align="center" *ngIf="!enJuego">
@@ -31,8 +47,8 @@
             <div *ngIf="nuevoJuego.operandoUno!=0">
                 <h6 *ngIf="nuevoJuego.numeroIngresado!=0" class="display-5">{{nuevoJuego.numeroIngresado}}</h6>
                 <hr class="my-4">
-                <p><i class="fa fa-spinner fa-spin">
-                    </i> Te quedan <span>{{tiempo}}</span> segundos</p>
+                <p><!--i class="fa fa-spinner fa-spin">
+                    </i--> Tiempo restante <span>{{tiempo}}</span> segundos</p>
             </div>
         </div>
     </div>

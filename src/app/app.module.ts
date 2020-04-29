@@ -49,7 +49,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DatabaseService} from './servicios/database.service';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { ModalComponent } from './componentes/modal/modal.component';
+//import { ModalComponent } from './componentes/modal/modal.component';
 //import {MatCardModule} from '@angular/material/card';
 
 //VENTANAS MODAL
@@ -85,7 +85,7 @@ import { ModalComponent } from './componentes/modal/modal.component';
     InputJugadoresComponent,
     SexoPipe,
     FooterComponent,
-    ModalComponent,
+    //ModalComponent,
   ],
   imports: [
     BrowserModule,
