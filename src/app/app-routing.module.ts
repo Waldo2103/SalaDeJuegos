@@ -23,7 +23,7 @@ import {NologinGuard} from "./guards/nologin.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: '/Login', pathMatch: 'full' },
-  { path: 'Principal',component: PrincipalComponent,canActivate:[AuthGuard] ,data: {animation: 'PrincipalPage'}},
+  { path: 'Registro',component: RegistroComponent,},//canActivate:[AuthGuard] ,data: {animation: 'RegistroPage'}},
   {path: 'Jugadores' , component: JugadoresListadoComponent,canActivate:[AuthGuard]},
   {path: 'Login' , component: LoginComponent,canActivate:[NologinGuard] ,data: {animation: 'LoginPage'}},
   {path: 'QuienSoy' , component: QuienSoyComponent,canActivate:[AuthGuard],data: {animation: 'LoginPage'}},

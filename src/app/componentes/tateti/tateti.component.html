@@ -1,5 +1,30 @@
 <div class="container">
     <div class="jumbotron">
+         <!--*****************************************************************************************-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="btnModal" [hidden]="true" data-target="#myModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fullscreen-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4-->
+        </div>
+        <div class="modal-body">
+            <p class="titulo">{{modalText}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="" data-dismiss="modal" (click)="nuevo()">Volver a Jugar</button>
+          <button type="button" class=""  data-dismiss="modal" routerLink="/Juegos">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--*****************************************************************************************-->
         <h1 class="display-4" align="center">Tateti</h1>
         <br>
         <div *ngIf="turnoJugador && !nuevoJuego.juegoTerminado" class="row">

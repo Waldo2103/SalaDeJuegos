@@ -16,6 +16,7 @@ export class AnagramaComponent implements OnInit {
   enJuego: boolean = false;
   ocultarVerificar: boolean = false;
 
+  modalText = "";
 
   constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.nuevoJuego = new JuegoAnagrama(databaseService);
@@ -31,12 +32,14 @@ export class AnagramaComponent implements OnInit {
     this.enJuego = true;
   }
   mostrarMensaje() {
-
+    (<HTMLButtonElement>document.getElementById('btnModal')).click();
     if (this.nuevoJuego.gano) {
-      this.toastr.success("Lo lograste", "Bravo!");
+      this.modalText = "CORRECTO!!";
+      //this.toastr.success("Lo lograste", "Bravo!");
     } else {
-      this.toastr.error(this.nuevoJuego.palabraIngresada + ", no es anagrama de " + this.nuevoJuego.palabraSeleccionada, 
-        "Seguí participando");
+      this.modalText = "PERDISTE!!";
+     // this.toastr.error(this.nuevoJuego.palabraIngresada + ", no es anagrama de " + this.nuevoJuego.palabraSeleccionada, 
+     //   "Seguí participando");
     }
     this.enJuego = false;
     this.ocultarVerificar = false;

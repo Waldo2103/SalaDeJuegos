@@ -18,6 +18,8 @@ export class TatetiComponent implements OnInit {
   imgCruz: string = './././assets/imagenes/X.png'
   imgCirculo: string = './././assets/imagenes/O.png'
 
+  modalText = "";
+
   constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.nuevoJuego = new JuegoTateti(databaseService);
   }
@@ -39,7 +41,9 @@ export class TatetiComponent implements OnInit {
         this.turnoJugador = true;
         if(this.nuevoJuego.verificarTresEnLinea(this.imgCruz)){
           if(!this.nuevoJuego.verificar()){
-            this.toastr.error("Perdiste..", "Te derrotaron");
+            (<HTMLButtonElement>document.getElementById('btnModal')).click();
+            this.modalText = "PERDISTE!!";
+            //this.toastr.error("Perdiste..", "Te derrotaron");
           }
         }
       }
@@ -53,8 +57,13 @@ export class TatetiComponent implements OnInit {
             this.generarJugada();
           }, 400);
         } else {
-          this.toastr.success("Felicitaciones!", "Ganaste");
+          (<HTMLButtonElement>document.getElementById('btnModal')).click();
+          this.modalText = "GANASTE!!";
+          //this.toastr.success("Felicitaciones!", "Ganaste");
         }
+      }else{
+        (<HTMLButtonElement>document.getElementById('btnModal')).click();
+          this.modalText = "HAY TABLA!!";
       }
     }
   }

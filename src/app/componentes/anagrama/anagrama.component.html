@@ -1,5 +1,30 @@
 <div class="container">
     <div align="center" class="jumbotron">
+         <!--*****************************************************************************************-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" id="btnModal" [hidden]="true" data-target="#myModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fullscreen-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4-->
+        </div>
+        <div class="modal-body">
+            <p class="titulo">{{modalText}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="" data-dismiss="modal" (click)="nuevo()">Volver a Jugar</button>
+          <button type="button" class=""  data-dismiss="modal" routerLink="/Juegos">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--*****************************************************************************************-->
         <h1 class="display-4">Anagrama</h1>
         <br>
         <div align="center" *ngIf="!enJuego">
@@ -9,10 +34,10 @@
         <div class="en-juego" *ngIf="enJuego">
             <div class="container tablero">
                 <div class="" *ngIf="!enJuego">
-                    <p>Ingrese un Anagrama..</p>
+                    <p>Ingresá un Anagrama..</p>
                 </div>
                 <div class="">
-                    <div class="col-sm-12 col-md-4" *ngIf="nuevoJuego.palabraSeleccionada!=''">
+                    <div class="col" *ngIf="nuevoJuego.palabraSeleccionada!=''">
                         <div class="">
                             <h2>{{nuevoJuego.palabraSeleccionada}}</h2>
                         </div>
@@ -22,14 +47,14 @@
                                 <input id="input-ingresado" [(ngModel)]="nuevoJuego.palabraIngresada" type="text"
                                     class="form-control" placeholder="Ingrese un anagrama:"
                                     aria-label="Ingrese un anagrama:" aria-describedby="button-addon2">
-                                <div [hidden]="ocultarVerificar" class="input-group-append">
-                                    <button class="" type="button" id="button-verificar"
-                                        (click)="verificarUsr()">Verificar</button>
-                                </div>
+                                
+                            </div>
+                            <div align="center" [hidden]="ocultarVerificar" class="">
+                                <button class="" type="button" id="button-verificar"
+                                    (click)="verificarUsr()">Verifica</button>
                             </div>
                         </div>
-                        <p><i class="fa fa-spinner fa-spin">
-                            </i> Ingrese un anagrama de la palabra : {{nuevoJuego.palabraSeleccionada}} </p>
+                        <p> Ingrese un anagrama de la palabra : {{nuevoJuego.palabraSeleccionada}} </p>
 
                     </div>
                 </div>
