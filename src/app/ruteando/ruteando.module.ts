@@ -15,7 +15,7 @@ import { AgilidadMasListadoComponent } from '../componentes/agilidad-mas-listado
 import { ListadoComponent } from'../componentes/listado/listado.component'
 import { ListadosComponent } from '../componentes/listados/listados.component';
 import { JuegosComponent } from '../componentes/juegos/juegos.component';
-import { RegistroComponent } from '../componentes/registro/registro.component';
+//import { RegistroComponent } from '../componentes/registro/registro.component';
 import { MenuCardComponent } from '../componentes/menu-card/menu-card.component';
 import { CabeceraComponent } from '../componentes/cabecera/cabecera.component';
 import { QuienSoyComponent } from '../componentes/quien-soy/quien-soy.component'
@@ -33,7 +33,7 @@ const MiRuteo : Routes =  [
   {path: 'Login' , component: LoginComponent, data: {animation: 'LoginPage'}},
   //{path: 'Mapa' , component: MapaDeGoogleComponent},
   {path: 'QuienSoy' , component: QuienSoyComponent},
-  {path: 'Registro' , component: RegistroComponent},
+  //{path: 'Registro' , component: RegistroComponent},
   {path: 'Principal' , component: PrincipalComponent, data: {animation: 'PrincipalPage'}},
   {path: 'Listado' , component: ListadoComponent},
   {path: 'Paises' , component: ListadoDePaisesComponent},
