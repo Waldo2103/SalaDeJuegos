@@ -72,7 +72,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ListadoComponent,
     ListadosComponent,
     JuegosComponent,
-    RegistroComponent,
+    //RegistroComponent,
     MenuCardComponent,
     CabeceraComponent,
     QuienSoyComponent,
