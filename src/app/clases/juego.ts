@@ -15,7 +15,7 @@ export enum EstadoJuego
 }
 
 export enum Juegos{
-  //Memoria = "Memoria",
+  Cartas = "Cartas",
   AdivinaElNumero = "Adivina el Número",
   AgilidadAritmetica = "Agilidad Aritmética",
   PiedraPapelTijera = "Piedra, Papel o Tijera",

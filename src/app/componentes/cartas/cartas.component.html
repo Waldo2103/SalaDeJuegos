@@ -25,36 +25,39 @@
     </div>
   </div>
   <!--*****************************************************************************************-->
-        <h1 class="display-4">Anagrama</h1>
+        <h1 class="display-4">Escala de Truco</h1>
         <br>
         <div align="center" *ngIf="!enJuego">
                 <p><button (click)="nuevo()" class="btn-lg" type="button" id="button-nuevo">
                         Jugar</button></p>
         </div>
-        <div class="en-juego" *ngIf="enJuego">
+        <div class="en-juego">
             <div class="container tablero">
                 <div class="" *ngIf="!enJuego">
-                    <p>Ingresá un Anagrama..</p>
+                    <p></p>
                 </div>
                 <div class="">
-                    <div class="col" *ngIf="nuevoJuego.palabraSeleccionada!=''">
+                    <div class="col" *ngIf="nuevoJuego.cartaSeleccionada!=''">
                         <div class="">
-                            <h2>{{nuevoJuego.palabraSeleccionada}}</h2>
+                            <h2></h2>
+                            <img src={{nuevoJuego.mazo[this.nuevoJuego.cartaSeleccionada].foto}} width="100px" height="150px" alt=""><span>   =>   </span><img *ngIf="!eligio" src="../../assets/imagenes/interroga.png" width="100px" height="150px" alt=""><img *ngIf="eligio" src="{{nuevoJuego.mazo[this.nuevoJuego.cartaSeleccionadaEscondida].foto}}" width="100px" height="150px" alt="">
                         </div>
-                        <div class="">
-                            <div class="input-group mb-3">
-
-                                <input id="input-ingresado" [(ngModel)]="nuevoJuego.palabraIngresada" type="text"
+                        <div class="" align="center">
+                            <br>
+                            <div class="button-group mb-3" *ngIf="!eligio">
+                                <button (click)="eleccion('mayor')">Mayor</button> - <button (click)="eleccion('menor')">Menor</button> - <button (click)="eleccion('igual')">Igual</button>
+                                <!--input id="input-ingresado" [(ngModel)]="nuevoJuego.cartaIngresada" type="text"
                                     class="form-control" placeholder="Ingrese un anagrama:"
-                                    aria-label="Ingrese un anagrama:" aria-describedby="button-addon2">
+                                    aria-label="Ingrese un anagrama:" aria-describedby="button-addon2"-->
                                 
                             </div>
+                            <br>
                             <div align="center" [hidden]="ocultarVerificar" class="">
                                 <button class="" type="button" id="button-verificar"
-                                    (click)="verificarUsr()">Validar</button>
+                                    (click)="otraCarta()">Otra Carta</button>
                             </div>
                         </div>
-                        <p> Ingrese una palabra : {{nuevoJuego.palabraSeleccionada}} </p>
+                        <p> Record: {{nuevoJuego.cont}} </p>
 
                     </div>
                 </div>

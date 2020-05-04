@@ -55,8 +55,8 @@ export class DatabaseService {
         let resultado : Resultado = new Resultado(new Date(fecha), juego, minutosTranscurridos, segundosTranscurridos, puntaje, nombre);
         listaResultados.push(resultado);
 
-        /*let fecha2 : string = "10/10/2019";
-        let juego2: string = "";
+        let fecha2 : string = "10/10/2019";
+        let juego2: string = "Buscaminas";
         let minutosTranscurridos2 : number = 2;
         let nombre2 : string = "admin";
         let puntaje2 : number = 200;       
@@ -64,7 +64,7 @@ export class DatabaseService {
        
 
         let resultado2 : Resultado = new Resultado(new Date(fecha2), juego2, minutosTranscurridos2, segundosTranscurridos2, puntaje2, nombre2);
-        listaResultados.push(resultado2);*/
+        listaResultados.push(resultado2);
 
         let fecha3 : string = "10/10/2019";
         let juego3: string = "Tateti";

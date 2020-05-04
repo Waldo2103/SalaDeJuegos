@@ -20,6 +20,7 @@ import { ListadoDeResultadosComponent }from './componentes/listado-de-resultados
 
 import {AuthGuard}from "./guards/auth.guard";
 import {NologinGuard} from "./guards/nologin.guard";
+import { CartasComponent } from './componentes/cartas/cartas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Login', pathMatch: 'full' },
@@ -38,8 +39,7 @@ const routes: Routes = [
       { path: '', component: MenuCardComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
-      //{ path: 'Adivina', component: AdivinaElNumeroComponent },
-      //{ path: 'Memoria', component: MemoriaComponent },
+      { path: 'Cartas', component: CartasComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'Tateti', component: TatetiComponent },
     ]

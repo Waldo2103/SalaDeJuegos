@@ -49,6 +49,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DatabaseService} from './servicios/database.service';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CartasComponent } from './componentes/cartas/cartas.component';
 //import { ModalComponent } from './componentes/modal/modal.component';
 //import {MatCardModule} from '@angular/material/card';
 
@@ -85,7 +86,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     InputJugadoresComponent,
     SexoPipe,
     FooterComponent,
-    //ModalComponent,
+    CartasComponent,
   ],
   imports: [
     BrowserModule,
