@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DatabaseService} from '../../servicios/database.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 declare var $: any;
 
@@ -22,7 +23,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
 
   modalText: string;
 
-  constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
+  constructor(private resulService: ResultadosService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.enJuego = false;
     this.tiempo = 5;
     this.nuevoJuego = new JuegoAgilidad(databaseService);
@@ -54,15 +55,33 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
 
   verificar() {
-    if (this.nuevoJuego.verificar()) {
-      console.log("bien ahi!");
+    if (this.nuevoJuego.verificar() != false) {
       this.modalText = "CORRECTO!!";
+      this.nuevo();
     } else {
-      console.log("NOP!");
-      this.modalText = "INCORRECTO";
+      let email = localStorage.getItem("email");
+      let f = new Date;
+      var fec: string = f.getDate()+"/"+f.getMonth()+"/"+f.getUTCFullYear()+" - "+f.getUTCHours()+":"+f.getUTCMinutes()+":"+f.getUTCSeconds();
+        
+      let data = {
+        juego: "Agilidad Aritmética",
+        email: email,
+        fechaJugada: fec,
+        resultado: ("Aciertos: " + this.nuevoJuego.cont)
+      }
+      this.resultado(data);
+      (<HTMLButtonElement>document.getElementById('btnModal')).click();
+      this.modalText = "INCORRECTO! Record: "+ this.nuevoJuego.cont;
+      
+
     }
-    (<HTMLButtonElement>document.getElementById('btnModal')).click();
+    //(<HTMLButtonElement>document.getElementById('btnModal')).click();
   }
+
+  resultado(resul: any){
+    this.resulService.createResul(resul);
+  }
+
   ngOnInit() {
     //this.ocultarNav = false;
   }

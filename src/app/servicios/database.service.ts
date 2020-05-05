@@ -17,7 +17,6 @@ export class DatabaseService {
   //constructor(private afireDatabase : AngularFirestore) { }
 
   public GuardarResultados(name : string, puntaje : number, minutosTranscurridos : number, segundosTranscurridos : number, juego : string) {
-    console.log("Guardando resultado: " + name + " " +  puntaje + " " + minutosTranscurridos + " : " + segundosTranscurridos + " " + juego);
   /*   this.afDatabase.database.ref('resultados/').push({
       nombre: name,
       puntaje: puntaje,

@@ -1,6 +1,7 @@
 
 import { Component, OnInit , Input, EventEmitter} from '@angular/core';
 import { DatabaseService } from '../../servicios/database.service';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 @Component({
   selector: 'app-listado-de-resultados',
@@ -8,23 +9,35 @@ import { DatabaseService } from '../../servicios/database.service';
   styleUrls: ['./listado-de-resultados.component.css']
 })
 export class ListadoDeResultadosComponent implements OnInit {
- @Input()
- listado: Array<any>;
+  listado:any
+  //miJugadoresServicio:JugadoresService
+  
+    constructor(private resulServ: ResultadosService) {
+      //this.miJugadoresServicio = serviceJugadores;
+    }
+    
 
-
- public resultados : Object;
-
- constructor(private databaseService : DatabaseService) {
-   this.resultados = databaseService.ListarResultados();
-   console.log(this.resultados);  
- }
 
   ngOnInit() {
-
+    this.TraerTodos();
   }
 
-  ver() {
-    console.info(this.listado);
-  }
 
+  TraerTodos(){
+    this.resulServ.getResuls().subscribe((productsSnapshot) => {
+      
+      this.listado = [];
+      productsSnapshot.forEach((productData: any) => {
+        this.listado.push(
+          {
+            email: productData.payload.doc.data().email,
+            fechaJugada: productData.payload.doc.data().fechaJugada,
+            juego: productData.payload.doc.data().juego,
+            resultado: productData.payload.doc.data().resultado,
+        });
+     
+        return this.listado;
+      })
+    });
+  }
 }

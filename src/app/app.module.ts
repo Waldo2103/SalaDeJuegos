@@ -24,7 +24,7 @@ import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugad
 import { JuegoServiceService } from './servicios/juego-service.service';
 import { ListadosComponent } from './componentes/listados/listados.component';
 import { JuegosComponent } from './componentes/juegos/juegos.component';
-//import { RegistroComponent } from './componentes/registro/registro.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 import { MenuCardComponent } from './componentes/menu-card/menu-card.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
@@ -73,7 +73,7 @@ import { CartasComponent } from './componentes/cartas/cartas.component';
     ListadoComponent,
     ListadosComponent,
     JuegosComponent,
-    //RegistroComponent,
+    RegistroComponent,
     MenuCardComponent,
     CabeceraComponent,
     QuienSoyComponent,

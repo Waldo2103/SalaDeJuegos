@@ -10,7 +10,8 @@ export class JuegoAgilidad extends Juego {
     operandoDos: number;
     resultado: number;
     numeroIngresado: number = 0;
-    gano :boolean=false;
+    gano :boolean;//=false;
+    cont: number = 0;
 
     constructor(databaseService: DatabaseService) {
         super(Juegos.AgilidadAritmetica, databaseService);
@@ -23,6 +24,9 @@ export class JuegoAgilidad extends Juego {
       }
 
     public generarOperacion(): void {
+        if(this.gano == false){
+            this.cont = 0;
+        }
         this.operandoUno = Math.floor((Math.random() * 20) + 1);
         this.operandoDos = Math.floor((Math.random() * 10) + 1);
         this.operador = this.operadores[Math.floor(Math.random() * this.operadores.length)];
@@ -46,10 +50,15 @@ export class JuegoAgilidad extends Juego {
         return result;
     }
 
-    public verificar(): boolean {
-        if (this.numeroIngresado == this.resultado)
+    public verificar() {
+        if (this.numeroIngresado == this.resultado){
+            this.cont = this.cont + 1;
             this.gano = true;
-        return this.gano;
+        }else{
+            this.gano = false;
+            return this.gano;
+        }
+        return this.cont;
     }
 
     public reset(): void{
@@ -58,6 +67,6 @@ export class JuegoAgilidad extends Juego {
         this.operandoDos = 0;
         this.resultado = 0;
         this.numeroIngresado = 0;
-        this.gano = false;
+        //this.gano = false;
     }
 }

@@ -64,6 +64,13 @@ button:hover:before {
     left: 7px;
     }
 
+    button:disabled,
+button[disabled]{
+  border: 1px solid #420057;
+  background-color: #a19da1;
+  color: #570d79;
+}
+
 input{
     background-color: #e2d6e7;
 }
@@ -99,3 +106,11 @@ label
     font-family: arcade;
     src: url(assets/fuentes/ArcadepixPlus.ttf) format("opentype");
   }
+
+.tablaH{
+    color: purple;
+    background-color: yellow;
+}
+.tablaB{
+    color: yellow;
+}

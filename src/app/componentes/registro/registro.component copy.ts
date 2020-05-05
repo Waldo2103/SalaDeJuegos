@@ -22,7 +22,6 @@ OnSubmitRegister(){
   this.auth.registeruser(this.email,this.password).then( auth => {
     this.router.navigate(['/home']);
   }).catch(err=> alert('los datos son incorrectos'))
-  //console.log('Estas en la funcion');
 }
 
 }

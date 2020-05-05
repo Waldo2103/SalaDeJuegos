@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DatabaseService} from '../../servicios/database.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 @Component({
   selector: 'app-cartas',
@@ -20,13 +21,12 @@ export class CartasComponent implements OnInit {
   modalText = "";
   eligio: boolean;
 
-  constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
+  constructor(private resulService: ResultadosService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.nuevoJuego = new JuegoCartas(databaseService);
   }
 
   verificarUsr() {
     this.ocultarVerificar = true;
-    console.log(this.nuevoJuego);
     this.nuevoJuego.verificar();
     this.mostrarMensaje();
   }
@@ -53,7 +53,22 @@ export class CartasComponent implements OnInit {
     this.nuevoJuego.palabraRandom();
   }
 
+  resultado(resul: any){
+    this.resulService.createResul(resul);
+  }
+
   mostrarMensaje() {
+    let email = localStorage.getItem("email");
+      let f = new Date;
+      var fec: string = f.getDate()+"/"+f.getMonth()+"/"+f.getUTCFullYear()+" - "+f.getUTCHours()+":"+f.getUTCMinutes()+":"+f.getUTCSeconds();
+        
+      let data = {
+        juego: "Escala de Truco",
+        email: email,
+        fechaJugada: fec,
+        resultado: ("Aciertos: " + this.nuevoJuego.cont)
+      }
+      this.resultado(data);
     (<HTMLButtonElement>document.getElementById('btnModal')).click();
     this.modalText = "Tu Record es: "+ this.nuevoJuego.cont;
     /*if (!this.nuevoJuego.gano) {

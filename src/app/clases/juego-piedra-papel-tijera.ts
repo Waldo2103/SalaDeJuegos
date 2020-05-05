@@ -8,7 +8,8 @@ export class JuegoPiedraPapelTijera extends Juego {
     jugadaUsuario: number = 0;
     resultado: number = -2; // no se inicio el juego
     private intervalo: NodeJS.Timer;
-    gano :boolean=false;
+    gano :boolean;
+    cont: number = 0;
 
     constructor(databaseService: DatabaseService) {
         super(Juegos.AdivinaElNumero, databaseService);
@@ -72,11 +73,21 @@ export class JuegoPiedraPapelTijera extends Juego {
         this.verificar();
     }
 
-    verificar(): boolean {
-        if(this.resultado)
+    verificar() {
+        if(this.resultado == 1){
             this.gano = true;
-        this.reset();
-        return this.gano;
+            this.cont = this.cont +1;
+            return this.cont;
+        }else if(this.resultado == 0){
+            this.gano = true;
+            this.cont = this.cont + 0;
+        }else if (this.resultado == -1) {
+            this.gano = false;
+            return this.gano
+        }
+        
+        //this.reset();
+        return this.cont;
     }
 
     reset(){

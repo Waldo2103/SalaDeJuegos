@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DatabaseService} from '../../servicios/database.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   modalText: string;
 
-  constructor(private toastr: ToastrService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
+  constructor(private resulService: ResultadosService,public authService: AuthService,private router: Router, public databaseService : DatabaseService){
     this.nuevoJuego = new JuegoPiedraPapelTijera(databaseService);
   }
 
@@ -32,6 +33,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
     this.repetidor = setInterval(() => {
       this.nuevoJuego.generarJugada();
       this.setImagenes();
+      
       if (this.stop) {
         this.nuevoJuego.jugadaUsuario = this.jugadaSeleccionada;
         this.setImagenes();
@@ -48,8 +50,15 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   verificar() {
     this.nuevoJuego.verificarJugada();
-    this.mostrarMensaje();
-    //this.enJuego = false;
+    if(this.nuevoJuego.gano == false){
+      this.mostrarMensaje();
+    } else{
+      setTimeout(()=>{
+        this.nuevo()
+      }, 3000);
+      
+    }
+
   }
 
   /**
@@ -57,22 +66,36 @@ export class PiedraPapelTijeraComponent implements OnInit {
    *   0 (empate)
    *   1 (usuario gana)
    */
+
+  resultado(resul: any){
+    this.resulService.createResul(resul);
+  }
+
   mostrarMensaje() {
+    let email = localStorage.getItem("email");
+      let f = new Date;
+      var fec: string = f.getDate()+"/"+f.getMonth()+"/"+f.getUTCFullYear()+" - "+f.getUTCHours()+":"+f.getUTCMinutes()+":"+f.getUTCSeconds();
+        
+      let data = {
+        juego: "Piedra, Papel o Tijera",
+        email: email,
+        fechaJugada: fec,
+        resultado: ("Aciertos: " + this.nuevoJuego.cont)
+      }
+      this.resultado(data);
     (<HTMLButtonElement>document.getElementById('btnModal')).click();
     switch (this.nuevoJuego.resultado) {
       case -1:
-        //this.toastr.error("Fallaste esta vez", ":( :( :(");
         this.modalText = "PERDISTE!!";
         break;
       case 0:
-        //this.toastr.warning("Intentalo de nuevo", "Es un empate");
         this.modalText = "EMPATE!!";
         break;
       case 1:
-        //this.toastr.success("Ganaste", "¡Felicitaciones!");
         this.modalText = "GANASTE!!";
         break;
     }
+    this.nuevoJuego.reset();
   }
 
   setImagenes() {

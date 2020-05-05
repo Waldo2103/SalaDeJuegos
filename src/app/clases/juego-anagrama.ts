@@ -36,7 +36,8 @@ export class JuegoAnagrama extends Juego {
     palabra:string = "";
     cantidadPalabras:number=9;
 
-    gano :boolean=false;
+    gano :boolean;
+    cont: number = 0;
 
     constructor(databaseService: DatabaseService) {
         super(Juegos.AdivinaElNumero, databaseService);
@@ -50,6 +51,9 @@ export class JuegoAnagrama extends Juego {
       }
 
     palabraRandom(){ 
+        if (this.gano == false) {
+            this.cont = 0;
+        }
     
         var randomNumber = Math.floor(Math.random()*this.cantidadPalabras);
     
@@ -61,17 +65,23 @@ export class JuegoAnagrama extends Juego {
     verificar() {
         this.diccionario[this.palabraSeleccionada].anagramas.forEach((ana) => 
         {
-            if (this.palabraIngresada.toUpperCase() == ana)
+            if (this.palabraIngresada.toUpperCase() == ana){
                 this.gano = true;
+                this.cont = this.cont +1;
+            }else{
+                this.gano = false;
+                return this.gano;
+            }
+                
         })
-        return this.gano;
+        return this.cont;
     }
     
 
     reset(){
         //this.palabraSeleccionada = "";
         this.palabraIngresada = "";
-        this.gano = false;
+        //this.gano = false;
         this.palabraRandom();
     }
     private finDelJuego(){

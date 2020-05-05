@@ -157,7 +157,6 @@ export class JuegoCartas extends Juego {
         } else {
             console.log("Error en eleccion");
         }
-        console.log("Resultado: ",this.cont);
         return this.cont;
     }
     

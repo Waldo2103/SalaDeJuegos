@@ -13,7 +13,7 @@ import { TatetiComponent } from './componentes/tateti/tateti.component';
 import {LoginComponent}from './componentes/login/login.component';
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component'
-//import { RegistroComponent } from './componentes/registro/registro.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 import { ListadoComponent } from'./componentes/listado/listado.component';
 import { ListadoDePaisesComponent } from './componentes/listado-de-paises/listado-de-paises.component';
 import { ListadoDeResultadosComponent }from './componentes/listado-de-resultados/listado-de-resultados.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'Jugadores' , component: JugadoresListadoComponent,canActivate:[AuthGuard]},
   {path: 'Login' , component: LoginComponent,canActivate:[NologinGuard] ,data: {animation: 'LoginPage'}},
   {path: 'QuienSoy' , component: QuienSoyComponent,canActivate:[AuthGuard],data: {animation: 'LoginPage'}},
-  //{path: 'Registro' , component: RegistroComponent},
+  {path: 'Registro' , component: RegistroComponent},
   {path: 'Listado' , component: ListadoComponent,canActivate:[AuthGuard],data: {animation: 'LoginPage'}},
   {path: 'Paises' , component: ListadoDePaisesComponent},
   {path: 'Resultados',component: ListadoDeResultadosComponent,canActivate:[AuthGuard],data: {animation: 'LoginPage'}},

@@ -8,20 +8,16 @@
 
 
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="tablaH">
     <tr>
-      <th scope="col">usuario</th>
-      <th scope="col">gano</th>
-      <th scope="col">puntaje</th>
-      <th scope="col">juego</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Fecha Conexión</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="tablaB">
     <tr *ngFor="let jugador of listado" >
-      <td >{{jugador.usuario}} </td>
-      <td>{{jugador.gano}} </td> 
-      <td>{{jugador.puntaje}} </td> 
-      <td>{{jugador.juego}} </td> 
+      <td >{{jugador.email}} </td>
+      <td>{{jugador.fec}} </td> 
       
     </tr>
    

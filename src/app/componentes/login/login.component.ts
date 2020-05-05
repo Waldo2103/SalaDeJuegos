@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { AuthService } from '../../servicios/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Roles } from '../../clases/roles.enum';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 
 
@@ -21,6 +22,22 @@ export class LoginComponent implements OnInit {
    
   form: FormGroup;
   rolesEnum = Roles;
+
+  userbtn: string = "";
+  passbtn: string = "";
+
+  completarUser(user : number){
+    if (user == 1) {
+      this.userbtn = "cvega@cvega.com";
+      this.passbtn = "cvega1";
+      //this.form.valid = true
+      //this.form.get('mail').value ="";
+    } else if (user == 2) {
+      this.userbtn = "admin@admin.com";
+      this.passbtn = "admin1";
+    }
+  }
+
   validation_messages = {
     'mail': [
       { type: 'required', message: 'Debe ingresar un email.' },
@@ -30,12 +47,12 @@ export class LoginComponent implements OnInit {
       { type: 'required', message: 'Debe ingresar una contraseña.' }
     ]
   };
+  modalText: any;
 
 
   constructor(private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder, private toastService: ToastrService,
-    private renderer: Renderer2
+    private router: Router, private formBuilder: FormBuilder, private resulService: ResultadosService
     ) {
     
       this.form = this.formBuilder.group({
@@ -57,48 +74,37 @@ export class LoginComponent implements OnInit {
   ocultarNavBar(){
     this.ocultarNav = true;
   }
+
+  loguear(user: any){
+    this.resulService.createLog(user);
+  }
   
   onSubmitLogin() {
-    this.authService.login(this.form.get('mail').value, this.form.get('password').value)
+
+    this.userbtn = this.form.get('mail').value
+    this.passbtn = this.form.get('password').value
+
+    this.authService.login(this.userbtn, this.passbtn)
       .then(res => {
-        console.log(res);
-        this.router.navigate(['/Principal']);
+        let f = new Date;
+        var fec: string = f.getDate()+"/"+f.getMonth()+"/"+f.getUTCFullYear()+" - "+f.getUTCHours()+":"+f.getUTCMinutes()+":"+f.getUTCSeconds();
+        let data = { email: this.userbtn,fec}
+        this.loguear(data);
+        localStorage.setItem("email", this.userbtn);
+        this.router.navigate(['/Juegos']);
       })
       .catch(error => {
-        console.log(error);
+        (<HTMLButtonElement>document.getElementById('btnModal')).click();
         if (error.code === 'auth/user-not-found') {
-          this.toastService.error('Usuario no encontrado.');
+          this.modalText = "Usuario no encontrado!";
+          //this.toastService.error('Usuario no encontrado.');
         } else if (error.code === 'auth/wrong-password') {
-          this.toastService.error('Contraseña incorrecta.');
+          this.modalText = "Contraseña incorrecta.";
+          //this.toastService.error('Contraseña incorrecta.');
         } else {
-          this.toastService.error('Ocurrió un error, contáctese con el administrador.');
+          this.modalText = "Ocurrió un error con el servidor";
         }
       });
-  }
-
-  cargarDatos(rol: Roles) {
-    switch (rol) {
-      case Roles.admin:
-        this.form.get('mail').setValue('admin@admin.com');
-        this.form.get('password').setValue('123456');
-        break;
-      case Roles.invitado:
-        this.form.get('mail').setValue('invitado@gmail.com');
-        this.form.get('password').setValue('222222');
-        break;
-        case Roles.usuario:
-        this.form.get('mail').setValue('usuario@gmail.com');
-        this.form.get('password').setValue('333333');
-        break;
-        case Roles.anonimo:
-        this.form.get('mail').setValue('anonimo@gmail.com');
-        this.form.get('password').setValue('444444');
-        break;
-        case Roles.tester:
-        this.form.get('mail').setValue('tester@gmail.com');
-        this.form.get('password').setValue('555555');
-        break;
-    }
   }
 
   

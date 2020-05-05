@@ -6,20 +6,20 @@
 </div-->
 
 <table class="table">
-    <thead class="thead-dark">
+    <thead class="tablaH">
       <tr>
         <th scope="col">Juego</th>
         <th scope="col">Jugador</th>
         <th scope="col">Resultado</th>
-        <th scope="col">Fecha</th>
+        <th scope="col">Fecha de Partida</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let juego of resultados">
+    <tbody class="tablaB">
+      <tr *ngFor="let juego of listado">
         <td >{{juego.juego}} </td>
-        <td >{{juego.nombre}} </td> 
-        <td >{{juego.puntaje}} </td>   
-        <td >{{juego.fecha}} </td>     
+        <td >{{juego.email}} </td> 
+        <td >{{juego.resultado}} </td>   
+        <td >{{juego.fechaJugada}} </td>     
       </tr>
      
     </tbody>
