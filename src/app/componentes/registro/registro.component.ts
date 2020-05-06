@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { AuthService } from '../../servicios/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Roles } from '../../clases/roles.enum';
+import { ResultadosService } from '../../servicios/resultados/resultados.service';
 
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -35,7 +36,7 @@ export class RegistroComponent implements OnInit {
   modalText: string;
 
   constructor(private authService: AuthService,
-    private route: ActivatedRoute,
+    private resulService: ResultadosService,
     private router: Router, private formBuilder: FormBuilder, private toastService: ToastrService) { 
 
       this.form = this.formBuilder.group({
@@ -51,10 +52,17 @@ export class RegistroComponent implements OnInit {
 
 ngOnInit() {
 }
-
+loguear(user: any){
+  this.resulService.createLog(user);
+}
 OnSubmitRegister(){
   if (this.form.get('password').value === this.form.get('password2').value) {
     this.authService.registeruser(this.form.get('mail').value, this.form.get('password').value).then( authService => {
+      let f = new Date;
+        var fec: string = f.getDate()+"/"+f.getMonth()+"/"+f.getUTCFullYear()+" - "+f.getUTCHours()+":"+f.getUTCMinutes()+":"+f.getUTCSeconds();
+        let data = { email: this.form.get('mail').value,fec}
+        this.loguear(data);
+        localStorage.setItem("email", this.form.get('mail').value);
       this.router.navigate(['/Login']);
     }).catch(error => {
       (<HTMLButtonElement>document.getElementById('btnModal')).click();
